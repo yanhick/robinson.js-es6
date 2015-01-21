@@ -4,7 +4,7 @@
   "description": "a port of robinson to node.js",
   "main": "index.js",
   "scripts": {
-    "test": "PATH=$PATH:./node_modules/.bin mocha test --recursive",
+    "test": "PATH=$PATH:./node_modules/.bin mocha test --recursive --compilers js:mocha-traceur",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- test --recursive -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test-run": "node index && [ -f output.png ]",
     "lint": "jshint lib"
@@ -21,6 +21,7 @@
     "chai": "^1.10.0",
     "coveralls": "^2.11.2",
     "istanbul": "^0.3.5",
-    "mocha": "^2.0.1"
+    "mocha": "^2.0.1",
+    "mocha-traceur": "^2.1.0"
   }
 }
