@@ -1,15 +1,15 @@
 
-var expect = require('chai').expect;
+let expect = require('chai').expect;
 
-var Canvas = require('../../lib/painting/canvas');
-var Color = require('../../lib/css/color');
-var Rect = require('../../lib/layout/rect');
-var DisplayCommand = require('../../lib/painting/display-command');
+let Canvas = require('../../lib/painting/canvas');
+let Color = require('../../lib/css/color');
+let Rect = require('../../lib/layout/rect');
+let DisplayCommand = require('../../lib/painting/display-command');
 
 describe('painting', function () {
     describe('#paintItem', function () {
         it('should paint a display command', function () {
-            var canvas = new Canvas(1, 1);
+            let canvas = new Canvas(1, 1);
 
             canvas.paintItem(new DisplayCommand().SolidColor(
                 new Color(0, 0, 0, 0),

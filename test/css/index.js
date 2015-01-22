@@ -1,11 +1,11 @@
 
-var expect = require('chai').expect;
+let expect = require('chai').expect;
 
-var CSSParser = require('../../lib/css');
+let CSSParser = require('../../lib/css');
 
 describe('css parser', function () {
     it('should parse name selector', function () {
-        var stylesheet = new CSSParser().parse('div {foo:bar;}');
+        let stylesheet = new CSSParser().parse('div {foo:bar;}');
 
         expect(stylesheet.rules).to.exists;
         expect(stylesheet.rules).have.length(1);
@@ -23,11 +23,11 @@ describe('css parser', function () {
     });
 
     it('should parse css with newlines', function () {
-        var css = 'div {\n';
+        let css = 'div {\n';
         css += 'foo: bar;\n';
         css += '}';
 
-        var stylesheet = new CSSParser().parse(css);
+        let stylesheet = new CSSParser().parse(css);
         expect(stylesheet.rules).to.exists;
         expect(stylesheet.rules).have.length(1);
         expect(stylesheet.rules[0].selectors[0].type).to.eql('simple');
@@ -44,7 +44,7 @@ describe('css parser', function () {
     });
 
     it('should parse id selector', function () {
-        var stylesheet = new CSSParser().parse('#my-id {foo:bar;}');
+        let stylesheet = new CSSParser().parse('#my-id {foo:bar;}');
 
         expect(stylesheet.rules[0].selectors[0].type).to.eql('simple');
         expect(stylesheet.rules[0].selectors[0].value).to.eql({
@@ -55,7 +55,7 @@ describe('css parser', function () {
     });
 
     it('should parse class selector', function () {
-        var stylesheet = new CSSParser().parse('.my-class {foo:bar;}');
+        let stylesheet = new CSSParser().parse('.my-class {foo:bar;}');
 
         expect(stylesheet.rules[0].selectors[0].type).to.eql('simple');
         expect(stylesheet.rules[0].selectors[0].value).to.eql({
@@ -66,7 +66,7 @@ describe('css parser', function () {
     });
 
     it('should parse universal selector without *', function () {
-        var stylesheet = new CSSParser().parse('{foo:bar;}');
+        let stylesheet = new CSSParser().parse('{foo:bar;}');
 
         expect(stylesheet.rules[0].selectors[0].type).to.eql('simple');
         expect(stylesheet.rules[0].selectors[0].value).to.eql({
@@ -77,7 +77,7 @@ describe('css parser', function () {
     });
 
     it('should parse universal selector with *', function () {
-        var stylesheet = new CSSParser().parse('* {foo:bar;}');
+        let stylesheet = new CSSParser().parse('* {foo:bar;}');
 
         expect(stylesheet.rules[0].selectors[0].type).to.eql('simple');
         expect(stylesheet.rules[0].selectors[0].value).to.eql({
@@ -88,7 +88,7 @@ describe('css parser', function () {
     });
 
     it('should parse multiple classes', function () {
-        var stylesheet = new CSSParser().parse('.my-class.my-other-class {foo:bar;}');
+        let stylesheet = new CSSParser().parse('.my-class.my-other-class {foo:bar;}');
 
         expect(stylesheet.rules[0].selectors[0].type).to.eql('simple');
         expect(stylesheet.rules[0].selectors[0].value).to.eql({
@@ -99,7 +99,7 @@ describe('css parser', function () {
     });
 
     it('should parse simple selectors', function () {
-        var stylesheet = new CSSParser().parse('div.my-class#my-id {foo:bar;}');
+        let stylesheet = new CSSParser().parse('div.my-class#my-id {foo:bar;}');
 
         expect(stylesheet.rules[0].selectors[0].type).to.eql('simple');
         expect(stylesheet.rules[0].selectors[0].value).to.eql({
@@ -110,9 +110,9 @@ describe('css parser', function () {
     });
 
     it('should parse keyword value', function () {
-        var stylesheet = new CSSParser().parse('div {foo:bar;}');
+        let stylesheet = new CSSParser().parse('div {foo:bar;}');
 
-        var declaration = stylesheet.rules[0].declarations[0];
+        let declaration = stylesheet.rules[0].declarations[0];
         expect(declaration).to.have.property('name', 'foo');
         expect(declaration).to.have.property('value');
         expect(declaration.value).to.have.property('type', 'keyword');
@@ -120,9 +120,9 @@ describe('css parser', function () {
     });
 
     it('should parse length value', function () {
-        var stylesheet = new CSSParser().parse('div {foo:10px;}');
+        let stylesheet = new CSSParser().parse('div {foo:10px;}');
 
-        var declaration = stylesheet.rules[0].declarations[0];
+        let declaration = stylesheet.rules[0].declarations[0];
         expect(declaration).to.have.property('name', 'foo');
         expect(declaration).to.have.property('value');
         expect(declaration.value).to.have.property('type', 'length');
@@ -135,9 +135,9 @@ describe('css parser', function () {
     });
 
     it('should parse color value', function () {
-        var stylesheet = new CSSParser().parse('div {foo:#CCFF00;}');
+        let stylesheet = new CSSParser().parse('div {foo:#CCFF00;}');
 
-        var declaration = stylesheet.rules[0].declarations[0];
+        let declaration = stylesheet.rules[0].declarations[0];
         expect(declaration).to.have.property('name', 'foo');
         expect(declaration).to.have.property('value');
         expect(declaration.value).to.have.property('type', 'color');
@@ -150,7 +150,7 @@ describe('css parser', function () {
     });
 
     it('should parse comma separated selectors', function () {
-        var stylesheet = new CSSParser().parse('div, p {foo:bar;}');
+        let stylesheet = new CSSParser().parse('div, p {foo:bar;}');
 
         expect(stylesheet.rules[0].selectors[0].type).to.eql('simple');
         expect(stylesheet.rules[0].selectors[0].value).to.eql({
