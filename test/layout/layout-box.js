@@ -6,9 +6,10 @@ var Rect = require('../../lib/layout/rect');
 var EdgeSize = require('../../lib/layout/edge-size');
 var LayoutBox = require('../../lib/layout/layout-box');
 var StyledNode = require('../../lib/style/styled-node');
-var ElementNode = require('../../lib/dom/element');
 var Value = require('../../lib/css/value');
 var Unit = require('../../lib/css/unit');
+
+import {ElementNode} from '../../lib/dom/element';
 
 describe('layout box', function () {
     describe('#getStyleNode', function () {

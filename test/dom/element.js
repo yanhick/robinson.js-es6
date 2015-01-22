@@ -1,7 +1,7 @@
 
 var expect = require('chai').expect;
 
-var ElementNode = require('../../lib/dom/element');
+import {ElementNode} from '../../lib/dom/element';
 
 describe('element', function () {
 
