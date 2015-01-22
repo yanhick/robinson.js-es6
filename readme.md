@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/yanhick/robinson.js.svg)](https://travis-ci.org/yanhick/robinson.js)
-[![Coverage Status](https://img.shields.io/coveralls/yanhick/robinson.js.svg)](https://coveralls.io/r/yanhick/robinson.js)
-[![Code Climate](https://codeclimate.com/github/yanhick/robinson.js/badges/gpa.svg)](https://codeclimate.com/github/yanhick/robinson.js)
+[![Build Status](https://travis-ci.org/yanhick/robinson.js-es6.svg)](https://travis-ci.org/yanhick/robinson.js-es6)
+[![Coverage Status](https://img.shields.io/coveralls/yanhick/robinson.js-es6.svg)](https://coveralls.io/r/yanhick/robinson.js-es6)
+[![Code Climate](https://codeclimate.com/github/yanhick/robinson.js-es6/badges/gpa.svg)](https://codeclimate.com/github/yanhick/robinson.js-es6)
 
 #Robinson.js
 
