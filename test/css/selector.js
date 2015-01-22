@@ -1,13 +1,13 @@
 
-var expect = require('chai').expect;
+let expect = require('chai').expect;
 
-var Selector = require('../../lib/css/selector');
-var SimpleSelector = require('../../lib/css/simple-selector');
+let Selector = require('../../lib/css/selector');
+let SimpleSelector = require('../../lib/css/simple-selector');
 
 describe('selector', function () {
     it('should allow retrieving the specificity of the selector', function () {
-        var simpleSelector = new SimpleSelector('div', 'my-id', ['my-class']);
-        var selector = new Selector().SimpleSelector(simpleSelector);
+        let simpleSelector = new SimpleSelector('div', 'my-id', ['my-class']);
+        let selector = new Selector().SimpleSelector(simpleSelector);
 
         expect(selector.specificity()).to.eql({
             a: 1,

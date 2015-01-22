@@ -1,14 +1,14 @@
 
-var expect = require('chai').expect;
-var HTMLParser = require('../../lib/html');
-var CSSParser = require('../../lib/css');
-var styleTree = require('../../lib/style');
+let expect = require('chai').expect;
+let HTMLParser = require('../../lib/html');
+let CSSParser = require('../../lib/css');
+let styleTree = require('../../lib/style');
 
 describe('style tree', function () {
     it('should style a dom node', function () {
-        var rootElement = new HTMLParser().parse('<html class="my-class"></html>');
-        var stylesheet = new CSSParser().parse('html {foo: bar;} .my-class {bar: foo;} .my-other-class {bar: baz;}');
-        var styledTree = styleTree(rootElement, stylesheet);
+        let rootElement = new HTMLParser().parse('<html class="my-class"></html>');
+        let stylesheet = new CSSParser().parse('html {foo: bar;} .my-class {bar: foo;} .my-other-class {bar: baz;}');
+        let styledTree = styleTree(rootElement, stylesheet);
 
         expect(styledTree.node.children).to.eql([]);
         expect(styledTree.node.attributes).to.eql({'class' : 'my-class'});
@@ -23,25 +23,25 @@ describe('style tree', function () {
     });
 
     it('should ignore node not matching a class selector', function () {
-        var rootElement = new HTMLParser().parse('<html></html>');
-        var stylesheet = new CSSParser().parse('.not-matched {foo: bar;}');
-        var styledTree = styleTree(rootElement, stylesheet);
+        let rootElement = new HTMLParser().parse('<html></html>');
+        let stylesheet = new CSSParser().parse('.not-matched {foo: bar;}');
+        let styledTree = styleTree(rootElement, stylesheet);
 
         expect(styledTree.specifiedValues.foo).to.not.exists;
     });
 
     it('should ignore node not matching an id selector', function () {
-        var rootElement = new HTMLParser().parse('<html></html>');
-        var stylesheet = new CSSParser().parse('#not-matched {foo: bar;}');
-        var styledTree = styleTree(rootElement, stylesheet);
+        let rootElement = new HTMLParser().parse('<html></html>');
+        let stylesheet = new CSSParser().parse('#not-matched {foo: bar;}');
+        let styledTree = styleTree(rootElement, stylesheet);
 
         expect(styledTree.specifiedValues.foo).to.not.exists;
     });
 
     it('should style a dom tree with multiple selectors', function () {
-        var rootElement = new HTMLParser().parse('<html class="my-class" id="my-id"></html>');
-        var stylesheet = new CSSParser().parse('html.my-class#my-id {foo: bar;}');
-        var styledTree = styleTree(rootElement, stylesheet);
+        let rootElement = new HTMLParser().parse('<html class="my-class" id="my-id"></html>');
+        let stylesheet = new CSSParser().parse('html.my-class#my-id {foo: bar;}');
+        let styledTree = styleTree(rootElement, stylesheet);
 
         expect(styledTree.node.children).to.eql([]);
         expect(styledTree.node.attributes).to.eql({'class' : 'my-class', 'id': 'my-id'});

@@ -1,22 +1,22 @@
 
-var expect = require('chai').expect;
-var HTMLParser = require('../../lib/html');
-var CSSParser = require('../../lib/css');
-var styleTree = require('../../lib/style');
-var layoutTree = require('../../lib/layout');
-var Dimensions = require('../../lib/layout/dimensions');
-var Rect = require('../../lib/layout/rect');
-var EdgeSize = require('../../lib/layout/edge-size');
+let expect = require('chai').expect;
+let HTMLParser = require('../../lib/html');
+let CSSParser = require('../../lib/css');
+let styleTree = require('../../lib/style');
+let layoutTree = require('../../lib/layout');
+let Dimensions = require('../../lib/layout/dimensions');
+let Rect = require('../../lib/layout/rect');
+let EdgeSize = require('../../lib/layout/edge-size');
 
-var util = require('util');
+let util = require('util');
 describe('layout tree', function () {
     it('should create a layout tree from a styled node', function () {
 
-        var rootElement = new HTMLParser().parse('<html><body></body></html>');
-        var stylesheet = new CSSParser().parse('{display: block;} body {width: 100px; height: 50px;}');
-        var styledTree = styleTree(rootElement, stylesheet);
+        let rootElement = new HTMLParser().parse('<html><body></body></html>');
+        let stylesheet = new CSSParser().parse('{display: block;} body {width: 100px; height: 50px;}');
+        let styledTree = styleTree(rootElement, stylesheet);
 
-        var laidoutTree = layoutTree(styledTree, new Dimensions(
+        let laidoutTree = layoutTree(styledTree, new Dimensions(
             new Rect(0, 0, 200, 100),
             new EdgeSize(0, 0, 0, 0),
             new EdgeSize(0, 0, 0, 0),
@@ -31,11 +31,11 @@ describe('layout tree', function () {
     });
 
     it('should create a layout tree from a styled node with borders', function () {
-        var rootElement = new HTMLParser().parse('<html><body></body></html>');
-        var stylesheet = new CSSParser().parse('{display: block;} body {width: 100px; height: 50px; border-width:10px;}');
-        var styledTree = styleTree(rootElement, stylesheet);
+        let rootElement = new HTMLParser().parse('<html><body></body></html>');
+        let stylesheet = new CSSParser().parse('{display: block;} body {width: 100px; height: 50px; border-width:10px;}');
+        let styledTree = styleTree(rootElement, stylesheet);
 
-        var laidoutTree = layoutTree(styledTree, new Dimensions(
+        let laidoutTree = layoutTree(styledTree, new Dimensions(
             new Rect(0, 0, 200, 100),
             new EdgeSize(0, 0, 0, 0),
             new EdgeSize(0, 0, 0, 0),
@@ -56,11 +56,11 @@ describe('layout tree', function () {
     });
 
     it('should create a layout tree from a styled node with inline children', function () {
-        var rootElement = new HTMLParser().parse('<html><body></body></html>');
-        var stylesheet = new CSSParser().parse('html {display: block;} body {display: inline;}');
-        var styledTree = styleTree(rootElement, stylesheet);
+        let rootElement = new HTMLParser().parse('<html><body></body></html>');
+        let stylesheet = new CSSParser().parse('html {display: block;} body {display: inline;}');
+        let styledTree = styleTree(rootElement, stylesheet);
 
-        var laidoutTree = layoutTree(styledTree, new Dimensions(
+        let laidoutTree = layoutTree(styledTree, new Dimensions(
             new Rect(0, 0, 200, 100),
             new EdgeSize(0, 0, 0, 0),
             new EdgeSize(0, 0, 0, 0),
