@@ -1,9 +1,10 @@
 
 var expect = require('chai').expect;
 var StyledNode = require('../../lib/style/styled-node');
-var ElementNode = require('../../lib/dom/element');
 var Value = require('../../lib/css/value');
 var Display = require('../../lib/style/display');
+
+import {ElementNode} from '../../lib/dom/element';
 
 describe('styled node', function () {
 
